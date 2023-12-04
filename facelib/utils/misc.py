@@ -99,9 +99,9 @@ def load_file_from_url(url, model_dir=None, progress=True, file_name=None):
     if file_name is not None:
         filename = file_name
     
-    model_path = folder_paths.get_full_path("facedetection_models", filename)
-    if model_path:
-        return model_path
+    # model_path = folder_paths.get_full_path("facedetection_models", filename)
+    # if model_path:
+    #     return model_path
 
     cached_file = os.path.abspath(os.path.join(ROOT_DIR, model_dir, filename))
     if not os.path.exists(cached_file):
