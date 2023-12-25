@@ -1,5 +1,5 @@
 import torch
-
+import folder_paths
 from custom_nodes.facerestore_cf.facelib.utils import load_file_from_url
 from .bisenet import BiSeNet
 from .parsenet import ParseNet
@@ -15,7 +15,7 @@ def init_parsing_model(model_name='bisenet', half=False, device='cuda'):
     else:
         raise NotImplementedError(f'{model_name} is not implemented.')
 
-    model_path = load_file_from_url(url=model_url, model_dir='../../models/facedetection', progress=True, file_name=None)
+    model_path = load_file_from_url(url=model_url, model_dir=folder_paths.get_folder_paths("facedetection_models")[0], progress=True, file_name=None)
     load_net = torch.load(model_path, map_location=lambda storage, loc: storage)
     model.load_state_dict(load_net, strict=True)
     model.eval()
